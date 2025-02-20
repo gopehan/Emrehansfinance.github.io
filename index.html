@@ -21,6 +21,12 @@
         h1 {
             color: #333;
         }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
         .btn {
             padding: 10px 20px;
             font-size: 16px;
@@ -30,28 +36,73 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
         }
-	.btntwo {
-	   
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #828d65;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
         .btn:hover {
             background-color: #84658d;
+        }
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 2px solid #828d65;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 160px;
+            
+        }
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            text-align: left;
+        }
+        .dropdown a:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-	<button class="btntwo" id="btnGetWeather">Resume</button>
         <h1>Welcome to the Weather App</h1>
         <p>Click the button below to check the weather.</p>
-        <a href="weatherapp.html" class="btn">Get Weather</a>
+        <div class="button-container">
+            <a href="resume.html" class="btn">Resume</a>
+            <div class="dropdown-container">
+                <button class="btn" id="dropdownBtn">Get Weather</button>
+                <div class="dropdown" id="dropdownMenu">
+                    <a href="weatherapp.html">Current Weather</a>
+                    <a href="forecast.html">Weather Forecast</a>
+                    <a href="alerts.html">Weather Alerts</a>
+                </div>
+            </div>
+            <a href="#" class="btn">In Development</a>
+        </div>
     </div>
+
+    <script>
+        document.getElementById("dropdownBtn").addEventListener("click", function() {
+            let dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        });
+
+        
+        document.addEventListener("click", function(event) {
+            let dropdown = document.getElementById("dropdownMenu");
+            let button = document.getElementById("dropdownBtn");
+
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>

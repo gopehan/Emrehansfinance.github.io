@@ -55,15 +55,14 @@
             border: 2px solid #828d65;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 160px;
-            
+            width: 180px;
+            text-align: left;
         }
         .dropdown a {
             display: block;
             padding: 10px;
             color: #333;
             text-decoration: none;
-            text-align: left;
         }
         .dropdown a:hover {
             background-color: #f1f1f1;
@@ -80,7 +79,7 @@
                 <button class="btn" id="dropdownBtn">Get Weather</button>
                 <div class="dropdown" id="dropdownMenu">
                     <a href="weatherapp.html">Current Weather</a>
-                    <a href="forecast.html">Weather Forecast</a>
+                    <a href="calculator.html">Go to Calculator</a> <!-- Updated this line -->
                     <a href="alerts.html">Weather Alerts</a>
                 </div>
             </div>
@@ -94,7 +93,6 @@
             dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
         });
 
-        
         document.addEventListener("click", function(event) {
             let dropdown = document.getElementById("dropdownMenu");
             let button = document.getElementById("dropdownBtn");

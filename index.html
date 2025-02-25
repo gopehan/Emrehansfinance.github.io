@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
-        /* Gradient Background */
+        /* Background Styling */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -95,6 +95,19 @@
             background: #e64a19;
         }
 
+        /* LinkedIn Icon */
+        .linkedin-icon {
+            width: 28px;
+            height: 28px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .linkedin-icon:hover {
+            transform: scale(1.2);
+        }
+
         /* Contact Form Modal */
         .modal {
             display: none;
@@ -180,6 +193,9 @@
     <div class="footer">
         <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
         <button class="contact-btn" onclick="openModal()">Contact Me</button>
+        <a href="YOUR_LINKEDIN_URL" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
+        </a>
     </div>
 
     <!-- Contact Form Modal -->
@@ -209,6 +225,23 @@
             let message = document.getElementById("message").value;
 
             if (!name || !email || !message) {
-                alert("Pleas
+                alert("Please fill in all fields.");
+                return;
+            }
 
+            let mailtoLink = `mailto:your.email@example.com?subject=Message from ${name}&body=${message}%0D%0A%0D%0AFrom: ${email}`;
+            window.location.href = mailtoLink;
+            closeModal();
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById("contactModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+
+</body>
+</html>
 

@@ -59,6 +59,39 @@
             transform: scale(1.05);
         }
 
+        /* Dropdown Container */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 2px solid #828d65;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 160px;
+            text-align: left;
+            z-index: 1000;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown a:hover {
+            background: #f1f1f1;
+        }
+
         /* Footer Styling */
         .footer {
             position: fixed;
@@ -144,9 +177,10 @@
     </div>
 
     <script>
-        document.getElementById("dropdownBtn").addEventListener("click", function() {
+        document.getElementById("dropdownBtn").addEventListener("click", function(event) {
             let dropdown = document.getElementById("dropdownMenu");
             dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+            event.stopPropagation(); // Prevents closing dropdown immediately when clicking the button
         });
 
         document.addEventListener("click", function(event) {
@@ -177,3 +211,4 @@
 
 </body>
 </html>
+

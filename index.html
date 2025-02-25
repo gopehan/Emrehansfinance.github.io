@@ -9,17 +9,18 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 100px;
+            margin: 0;
             background: linear-gradient(135deg, #20c1b9, #d3809b);
             height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Moves content towards the top */
             justify-content: center;
+            padding-top: 50px; /* Pushes the container up */
         }
 
         /* Container with Shadows and Smooth Appearance */
         .container {
-            padding: 50px;
+            padding: 40px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -35,33 +36,34 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             position: relative;
+            margin-top: 20px;
         }
 
         /* Button Styling with Transitions */
         .btn {
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px; /* Restored original button size */
+            font-size: 16px; 
             color: white;
             background: linear-gradient(135deg, #828d65, #6a7f4f);
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            width: 160px;
+            width: 150px; /* Restored width */
             text-align: center;
             display: inline-block;
             position: relative;
             transition: all 0.3s ease-in-out;
-            box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Button Hover Effect */
         .btn:hover {
             background: linear-gradient(135deg, #6a7f4f, #828d65);
             transform: scale(1.05);
-            box-shadow: 5px 6px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.3);
         }
 
         /* Dropdown Container */
@@ -79,9 +81,9 @@
             transform: translateX(-50%);
             background: white;
             border: 2px solid #828d65;
-            border-radius: 8px;
+            border-radius: 5px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            width: 180px;
+            width: 160px;
             text-align: left;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -90,7 +92,7 @@
 
         .dropdown a {
             display: block;
-            padding: 12px;
+            padding: 10px;
             color: #333;
             text-decoration: none;
             transition: background 0.3s ease-in-out;
@@ -103,17 +105,17 @@
         /* LinkedIn Icon Styling */
         .linkedin-container {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .linkedin-icon {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             transition: transform 0.3s ease-in-out;
         }
 
         .linkedin-icon:hover {
-            transform: scale(1.2);
+            transform: scale(1.15);
         }
 
         /* Fade-In Animation */
@@ -142,7 +144,7 @@
                 <button class="btn" id="dropdownBtn">Get Weather</button>
                 <div class="dropdown" id="dropdownMenu">
                     <a href="weatherapp.html">Current Weather</a>
-                    <a href="calculator.html">Go to Calculator</a> <!-- Fixed link -->
+                    <a href="calculator.html">Go to Calculator</a> 
                     <a href="alerts.html">Weather Alerts</a>
                 </div>
 
@@ -188,3 +190,4 @@
     </script>
 </body>
 </html>
+

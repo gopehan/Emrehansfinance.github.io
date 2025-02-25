@@ -15,6 +15,220 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
 
+        /* Container */
+        .container {
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.2s ease-in-out;
+            padding-bottom: 20px;
+        }
 
-        <!-- Excel Embed Content
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            background: #6a7f4f;
+            border-radius: 12px 12px 0 0;
+            padding: 10px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .tab:hover {
+            background: #828d65;
+        }
+
+        .active-tab {
+            background: #4f6a3f;
+        }
+
+        /* Calculator & Excel Embeds */
+        .content {
+            padding: 20px;
+            display: none;
+        }
+
+        .active-content {
+            display: block;
+        }
+
+        /* Input Styling */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 10px 18px;
+            font-size: 15px;
+            color: white;
+            background: linear-gradient(135deg, #6a7f4f, #828d65);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #828d65, #6a7f4f);
+            transform: scale(1.05);
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: linear-gradient(135deg, #b93c3c, #8a2b2b);
+            margin-top: 15px;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, #8a2b2b, #b93c3c);
+        }
+
+        /* Result Display */
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Excel Embed */
+        .excel-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Tabs for Switching -->
+        <div class="tabs">
+            <div class="tab active-tab" id="calcTab" onclick="switchTab('calculator')">Calculator</div>
+            <div class="tab" id="excelTab" onclick="switchTab('excel')">Switch to Excel</div>
+        </div>
+
+        <!-- Calculator Content -->
+        <div class="content active-content" id="calculator">
+            <h2>Compound Interest Calculator</h2>
+            
+            <div class="input-group">
+                <label for="principal">Principal Amount ($)</label>
+                <input type="number" id="principal" placeholder="Enter principal amount" value="1000">
+            </div>
+
+            <div class="input-group">
+                <label for="rate">Annual Interest Rate (%)</label>
+                <input type="number" id="rate" placeholder="Enter interest rate" value="5">
+            </div>
+
+            <div class="input-group">
+                <label for="years">Number of Years</label>
+                <input type="number" id="years" placeholder="Enter years" value="10">
+            </div>
+
+            <div class="input-group">
+                <label for="compounds">Compounds per Year</label>
+                <input type="number" id="compounds" placeholder="Enter times compounded per year" value="12">
+            </div>
+
+            <button class="btn" onclick="calculateInterest()">Calculate</button>
+
+            <div class="result" id="result"></div>
+        </div>
+
+        <!-- Excel Embed Content -->
+        <div class="content" id="excel">
+            <h2>Excel Spreadsheet</h2>
+            <div class="excel-container">
+                <iframe src="YOUR_EXCEL_EMBED_LINK"></iframe>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <button class="btn back-btn" onclick="goBack()">Back to Home</button>
+
+    </div>
+
+    <script>
+        function calculateInterest() {
+            let principal = parseFloat(document.getElementById("principal").value);
+            let rate = parseFloat(document.getElementById("rate").value) / 100;
+            let years = parseFloat(document.getElementById("years").value);
+            let compounds = parseFloat(document.getElementById("compounds").value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(years) || isNaN(compounds) || principal <= 0 || rate <= 0 || years <= 0 || compounds <= 0) {
+                document.getElementById("result").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            let amount = principal * Math.pow(1 + rate / compounds, compounds * years);
+            document.getElementById("result").innerHTML = `Final Amount: $${amount.toFixed(2)}`;
+        }
+
+        function switchTab(tabName) {
+            document.getElementById("calculator").classList.remove("active-content");
+            document.getElementById("excel").classList.remove("active-content");
+            document.getElementById("calcTab").classList.remove("active-tab");
+            document.getElementById("excelTab").classList.remove("active-tab");
+
+            if (tabName === "calculator") {
+                document.getElementById("calculator").classList.add("active-content");
+                document.getElementById("calcTab").classList.add("active-tab");
+            } else {
+                document.getElementById("excel").classList.add("active-content");
+                document.getElementById("excelTab").classList.add("active-tab");
+            }
+        }
+
+        function goBack() {
+            window.location.href = "index.html"; // Change this if your homepage has a different filename
+        }
+    </script>
+
+</body>
+</html>

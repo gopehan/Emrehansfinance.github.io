@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
-        /* Gradient Background */
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -13,185 +13,191 @@
             background: linear-gradient(135deg, #20c1b9, #d3809b);
             height: 100vh;
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 30px; /* Moves content higher */
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Container with Shadows */
         .container {
-            padding: 30px;
+            padding: 50px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: inline-block;
-            animation: fadeIn 1.2s ease-in-out;
+            margin: auto;
         }
 
         h1 {
             color: #333;
         }
 
-        /* Button Container - Tighter Spacing */
-        .button-container {
+        /* Footer Styling */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #6a7f4f;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
             display: flex;
-            justify-content: center;
-            gap: 10px; /* Reduced gap */
-            position: relative;
-            margin-top: 15px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
         }
 
-        /* Compact & Uniform Button Styling */
-        .btn, #dropdownBtn {
-            padding: 8px 18px; /* Compact padding */
-            font-size: 15px; 
+        .footer a {
             color: white;
-            background: linear-gradient(135deg, #828d65, #6a7f4f);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Contact Me Button */
+        .contact-btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            background: #ff5722;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            text-decoration: none;
-            width: 140px; /* Ensures all buttons are the same width */
-            height: 40px; /* Ensures all buttons have the same height */
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease-in-out;
         }
 
-        /* Button Hover Effect */
-        .btn:hover, #dropdownBtn:hover {
-            background: linear-gradient(135deg, #6a7f4f, #828d65);
-            transform: scale(1.05);
-            box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.3);
+        .contact-btn:hover {
+            background: #e64a19;
         }
 
-        /* Dropdown Container */
-        .dropdown-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Styling */
-        .dropdown {
+        /* Contact Form Modal */
+        .modal {
             display: none;
-            position: absolute;
-            top: 42px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border: 2px solid #828d65;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 150px;
-            text-align: left;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            position: fixed;
             z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
         }
 
-        .dropdown a {
-            display: block;
-            padding: 8px;
-            color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            transition: background 0.3s ease-in-out;
-        }
-
-        .dropdown a:hover {
-            background: #f1f1f1;
-        }
-
-        /* LinkedIn Icon Styling */
-        .linkedin-container {
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
             text-align: center;
-            margin-top: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.3s ease-in-out;
         }
 
-        .linkedin-icon {
-            width: 26px;
-            height: 26px;
-            transition: transform 0.3s ease-in-out;
+        .modal h2 {
+            margin-bottom: 15px;
         }
 
-        .linkedin-icon:hover {
-            transform: scale(1.15);
+        .modal input,
+        .modal textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            padding: 10px;
+            border: none;
+            background: #6a7f4f;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .modal button:hover {
+            background: #4f6a3f;
+        }
+
+        .close {
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            color: red;
         }
 
         /* Fade-In Animation */
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Welcome to the Weather App</h1>
         <p>Click the button below to check the weather.</p>
-        
+
         <div class="button-container">
             <a href="resume.html" class="btn">Resume</a>
-            
-            <div class="dropdown-container">
-                <button id="dropdownBtn">Get Weather</button>
-                <div class="dropdown" id="dropdownMenu">
-                    <a href="weatherapp.html">Current Weather</a>
-                    <a href="calculator.html">Go to Calculator</a> 
-                    <a href="alerts.html">Weather Alerts</a>
-                </div>
-
-                <!-- LinkedIn Icon Below the "Get Weather" Button -->
-                <div class="linkedin-container">
-                    <a href="YOUR_LINKEDIN_URL" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-                    </a>
-                </div>
-            </div>
-            
+            <a href="calculator.html" class="btn">Calculator</a>
             <a href="#" class="btn">In Development</a>
         </div>
     </div>
 
+    <!-- Footer -->
+    <div class="footer">
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <button class="contact-btn" onclick="openModal()">Contact Me</button>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Contact Me</h2>
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
     <script>
-        document.getElementById("dropdownBtn").addEventListener("click", function() {
-            let dropdown = document.getElementById("dropdownMenu");
-            if (dropdown.style.display === "block") {
-                dropdown.style.opacity = "0";
-                setTimeout(() => {
-                    dropdown.style.display = "none";
-                }, 200);
-            } else {
-                dropdown.style.display = "block";
-                setTimeout(() => {
-                    dropdown.style.opacity = "1";
-                }, 10);
-            }
-        });
+        function openModal() {
+            document.getElementById("contactModal").style.display = "flex";
+        }
 
-        document.addEventListener("click", function(event) {
-            let dropdown = document.getElementById("dropdownMenu");
-            let button = document.getElementById("dropdownBtn");
+        function closeModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
 
-            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-                dropdown.style.opacity = "0";
-                setTimeout(() => {
-                    dropdown.style.display = "none";
-                }, 200);
+        function sendMessage() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            if (!name || !email || !message) {
+                alert("Please fill in all fields.");
+                return;
             }
-        });
+
+            let mailtoLink = `mailto:your.email@example.com?subject=Contact from ${name}&body=${message}%0D%0A%0D%0AFrom: ${email}`;
+            window.location.href = mailtoLink;
+            closeModal();
+        }
+
+        // Close modal if user clicks outside the box
+        window.onclick = function(event) {
+            let modal = document.getElementById("contactModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     </script>
+
 </body>
 </html>
-
 

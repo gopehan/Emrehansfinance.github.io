@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
-        /* Background Styling */
+        /* Gradient Background */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -15,20 +15,47 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            align-items: center;
         }
 
-        /* Container Styling */
+        /* Restoring Original Look */
         .container {
             padding: 50px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            margin: auto;
+            text-align: center;
+            margin-top: 50px;
         }
 
         h1 {
             color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background: linear-gradient(135deg, #828d65, #6a7f4f);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 150px;
+            text-align: center;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #6a7f4f, #828d65);
+            transform: scale(1.05);
         }
 
         /* Footer Styling */
@@ -137,7 +164,7 @@
 </head>
 <body>
 
-    <!-- Keeping your original header -->
+    <!-- Restoring Original Header -->
     <div class="container">
         <h1>Welcome to the Weather App</h1>
         <p>Click the button below to check the weather.</p>
@@ -182,24 +209,6 @@
             let message = document.getElementById("message").value;
 
             if (!name || !email || !message) {
-                alert("Please fill in all fields.");
-                return;
-            }
+                alert("Pleas
 
-            let mailtoLink = `mailto:your.email@example.com?subject=Contact from ${name}&body=${message}%0D%0A%0D%0AFrom: ${email}`;
-            window.location.href = mailtoLink;
-            closeModal();
-        }
-
-        // Close modal if user clicks outside the box
-        window.onclick = function(event) {
-            let modal = document.getElementById("contactModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
-    </script>
-
-</body>
-</html>
 

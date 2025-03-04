@@ -8,133 +8,86 @@
         /* Background Styling */
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
-            background: linear-gradient(135deg, #20c1b9, #d3809b);
-            height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Full-screen overlay */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark translucent effect */
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Restoring Original Look */
-        .container {
-            padding: 50px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .button-container {
-            display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            position: relative;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 0.5s ease-in-out;
         }
 
-        .btn {
-            padding: 10px 20px;
-            font-size: 16px;
+        /* Text Styling */
+        #overlay p {
+            font-size: 32px;
+            font-weight: bold;
             color: white;
-            background: linear-gradient(135deg, #828d65, #6a7f4f);
+            margin-bottom: 20px;
+        }
+
+        /* Button styling */
+        #overlay button {
+            padding: 12px 24px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            width: 150px;
-            text-align: center;
-            transition: 0.3s ease-in-out;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #6a7f4f, #828d65);
-            transform: scale(1.05);
-        }
-
-        /* Dropdown Container */
-        .dropdown-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Styling */
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
             background: white;
-            border: 2px solid #828d65;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 160px;
-            text-align: left;
-            z-index: 1000;
+            color: #1e3c72;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
         }
 
-        .dropdown a {
-            display: block;
-            padding: 10px;
-            color: #333;
-            text-decoration: none;
+        #overlay button:hover {
+            background: #ddd;
         }
 
-        .dropdown a:hover {
-            background: #f1f1f1;
-        }
-
-        /* Footer Styling */
-        .footer {
-            position: fixed;
-            bottom: 0;
+        /* Header Styling */
+        .header {
             width: 100%;
-            background: #6a7f4f;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-        .footer a {
+        .header h1 {
+            margin: 0;
             color: white;
-            text-decoration: none;
             font-weight: bold;
+            font-size: 24px;
         }
 
-        /* Contact Me Button (Moved to Right) */
-        .contact-btn {
-            padding: 8px 15px;
-            font-size: 14px;
-            background: #ff5722;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-            margin-left: auto;
+        .header .top-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .contact-btn:hover {
-            background: #e64a19;
-        }
-
-        /* LinkedIn Icon */
         .linkedin-icon {
             width: 28px;
             height: 28px;
-            margin-left: 10px;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
         }
@@ -143,72 +96,114 @@
             transform: scale(1.2);
         }
 
+        .container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            backdrop-filter: blur(10px);
+        }
+
+        .container .about-text {
+            text-align: left;
+            max-width: 50%;
+        }
+
+        .container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .projects {
+            margin-top: 50px;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-box {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to the Weather App</h1>
-        <p>Click the button below to check the weather.</p>
+    <!-- Translucent Cover -->
+    <div id="overlay">
+        <p>Welcome to the Weather App</p>
+        <button onclick="removeOverlay()">Enter</button>
+    </div>
 
-        <div class="button-container">
+    <div class="header">
+        <h1>Weather App</h1>
+        <div class="top-right">
             <a href="resume.html" class="btn">Resume</a>
-
-            <div class="dropdown-container">
-                <button class="btn" id="dropdownBtn">Get Weather</button>
-                <div class="dropdown" id="dropdownMenu">
-                    <a href="weatherapp.html">Current Weather</a>
-                    <a href="calculator.html">Go to Calculator</a> 
-                    <a href="alerts.html">Weather Alerts</a>
-                </div>
-            </div>
-
-            <a href="#" class="btn">In Development</a>
+            <a href="YOUR_LINKEDIN_URL" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
+            </a>
+            <button class="btn" onclick="sendEmail()">Contact Me</button>
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <a href="YOUR_LINKEDIN_URL" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="linkedin-icon">
-        </a>
-        <button class="contact-btn" onclick="sendEmail()">Contact Me</button>
+    <div class="container">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>Write a brief introduction about yourself here.</p>
+        </div>
+        <img src="your-image.jpg" alt="Your Picture">
+    </div>
+
+    <div class="projects">
+        <h2>Projects</h2>
+        <a href="project1.html" class="project-box">Project 1</a>
+        <a href="project2.html" class="project-box">Project 2</a>
+        <a href="project3.html" class="project-box">Project 3</a>
     </div>
 
     <script>
-        document.getElementById("dropdownBtn").addEventListener("click", function(event) {
-            let dropdown = document.getElementById("dropdownMenu");
-            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-            event.stopPropagation(); // Prevents closing dropdown immediately when clicking the button
-        });
-
-        document.addEventListener("click", function(event) {
-            let dropdown = document.getElementById("dropdownMenu");
-            let button = document.getElementById("dropdownBtn");
-
-            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-                dropdown.style.display = "none";
-            }
-        });
-
         function sendEmail() {
-            let recipient = "your.email@example.com"; // Replace with your email
+            let recipient = "your.email@example.com"; 
             let subject = encodeURIComponent("Inquiry from Weather App");
             let body = encodeURIComponent("Hello,\n\nI would like to get in touch with you.\n\nBest regards.");
             
             let mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
             window.location.href = mailtoLink;
+        }
 
-            // Fallback alert if email client isn't available
+        function removeOverlay() {
+            let overlay = document.getElementById("overlay");
+            overlay.style.opacity = "0";
             setTimeout(() => {
-                if (window.location.href.indexOf("mailto:") !== -1) {
-                    alert("If your email client did not open, please copy and paste this email: " + recipient);
-                }
-            }, 1000);
+                overlay.style.display = "none";
+            }, 500); // Wait for fade-out transition
         }
     </script>
 
 </body>
 </html>
-

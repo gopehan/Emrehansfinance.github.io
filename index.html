@@ -83,6 +83,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            padding-right: 40px; /* prevent cutoff */
         }
 
         .linkedin-icon {
@@ -96,56 +97,9 @@
             transform: scale(1.2);
         }
 
-        /* Resume Button Styling */
-        .resume-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px; /* space between icon and text */
-            padding: 10px 20px;
-            background: white;
-            color: #1e3c72;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .resume-btn:hover {
-            background: #ddd;
-            transform: scale(1.05);
-        }
-
-        .container {
-            margin: 100px auto 0; 
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            gap: 50px; 
-            width: fit-content; 
-            max-width: 90%;
-            padding: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .container .about-text {
-            text-align: left;
-            max-width: 50%;
-        }
-
-        .container img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
         .projects {
             width: 100%; 
-            margin: 50px 0;
+            margin: 100px 0 50px; /* push down below header */
             padding: 50px 0; 
             background: rgba(255, 255, 255, 0.2);
             border-radius: 0; 
@@ -199,23 +153,12 @@
     <div class="header">
         <h1>Emrehan Seferoglu</h1>
         <div class="top-right">
-            <!-- Resume button with envelope icon -->
-            <a href="resume.html" class="resume-btn">📩 Resume</a>
-
-            <!-- LinkedIn icon -->
+            <!-- LinkedIn icon only -->
             <a href="YOUR_LINKEDIN_URL" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
                      alt="LinkedIn" class="linkedin-icon">
             </a>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="about-text">
-            <h2>About Me</h2>
-            <p>Write a brief introduction about yourself here.</p>
-        </div>
-        <img src="your-image.jpg" alt="Your Picture">
     </div>
 
     <div class="projects">
